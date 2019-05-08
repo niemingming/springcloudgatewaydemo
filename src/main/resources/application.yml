@@ -1,0 +1,22 @@
+spring:
+  cloud:
+    gateway:
+      routes:
+      - id: baidu
+        uri: https://www.baidu.com
+        filters:
+        - RewritePath=/api/baidu/.*,/
+        predicates:
+        - Path=/api/baidu/**
+      - id: github
+        uri: https://github.com
+        predicates:
+        - Path=/api/github/**
+        filters:
+        - RewritePath=/api/github/(?<param>.*),/$\{param}
+#      default-filters:
+#      #全局的filter
+#      - name: addhead
+#      - AddRequestHeader=x-user-info,self
+
+
