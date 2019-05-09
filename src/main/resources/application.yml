@@ -6,6 +6,8 @@ spring:
         uri: https://www.baidu.com
         filters:
         - RewritePath=/api/baidu/.*,/
+#        - name: mygatewayfactory
+        - mygatewayfactory=test,18
         predicates:
         - Path=/api/baidu/**
       - id: github
@@ -14,6 +16,7 @@ spring:
         - Path=/api/github/**
         filters:
         - RewritePath=/api/github/(?<param>.*),/$\{param}
+        - mygatewayfactory=github,20
 #      default-filters:
 #      #全局的filter
 #      - name: addhead
